@@ -1,0 +1,28 @@
+body {
+  padding: 0;
+  margin: 0;
+}
+
+#map,
+body,
+html {
+  height: 100%;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh; /* Adjust height as needed */
+}
+
+.chart-container {
+  /* Add any styling for the chart container */
+  margin-bottom: 20px; /* Add margin to create space between the chart and dropdowns */
+}
+
+.dropdown-container {
+  /* Add any styling for the dropdown container */
+}
+
