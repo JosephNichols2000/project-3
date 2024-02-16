@@ -13,9 +13,10 @@ The purpose of this analysis was to obtain greater understanding of whether a co
    * The first dataset we have referred to as the Olympic Dataset. This dataset consists of about 270,000 rows each representing Olympic information for each event going back to 1896. The information included in the dataset includes the Olympians name, country represented, event and the medal achieved. This was the main dataset we used in our analysis. We chose this dataset because it provided a lot of records and countries to aggregate.
 
    * The other three datasets we used we gathered from the World Bank Group to find data on countries and nations GDP, Population and Population Density. The good thing about these datasets was the uniformity of the structure of the data going back into the 1960's.
+   * Data was taken in CSV format from the web. The data was modified in the Olympic and Country Coordinates datasets so that the country names would align with the World Bank datasets. The Olympic and World Bank datasets were imported into SQL and joined together with new columns created, "Country Year" which was used as a Primary Key, "DensityPerX" "GDPPerX", and "PopulationPerX". The joined table was turned into a csv and uploaded into NoSQL along with the Country Coordinates dataset, where they were combined and made into a json file to be used with our javascript code.
 
 # Using and interacting with the project
-
+The scatterplots have multiple filters and dynamic parts. Each scatterplot adjusts the plots visible based on the year selected and whether you desire to view the Bronze, Silver, Gold, or Total medal counts. Additionally, the title and tooltips respond to the filters selected and the information of the plot selected will show the data of that specific circle.
 
 # Ethical considerations made in the project
 Even though the Olympic data public, we strove to avoid using names in the analysis.
