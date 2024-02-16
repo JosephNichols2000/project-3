@@ -1,7 +1,7 @@
 # Project 3 Assignment
 
 # Overview
-The purpose of this analysis was to obtain greater understanding of whether a country/nation's GDP, Population or Population Density could be predictor of Olympic success. To acheive this we sought to graph the following information:
+The purpose of this analysis was to obtain greater understanding of whether a country/nation's GDP, Population or Population Density could be predictor of Olympic success. To achieve this we sought to graph the following information:
   *  Highest and lowest medal count by GDP
   *  Highest and lowest medal count by Population
   *  Highest and lowest medal count by Population Density
