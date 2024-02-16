@@ -28,9 +28,29 @@ function createScatterPlot(containerId, data, selectedYear, selectedMetric, colo
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
   // Set up scales for X and Y axes
-  var xScale = d3.scaleLinear()
-    .domain([0, d3.max(filteredData, d => d.TotalMedalCount)])
-    .range([0, width]);
+  var xScale;
+  if (selectedMetric.endsWith('PerBronze')) {
+    xScale = d3.scaleLinear()
+      .domain([0, d3.max(filteredData, d => d.BronzeCount)])
+      .range([0, width]);
+  } else if (selectedMetric.endsWith('PerSilver')) {
+    xScale = d3.scaleLinear()
+      .domain([0, d3.max(filteredData, d => d.SilverCount)])
+      .range([0, width]);
+  } else if (selectedMetric.endsWith('PerGold')) {
+    xScale = d3.scaleLinear()
+      .domain([0, d3.max(filteredData, d => d.GoldCount)])
+      .range([0, width]);
+  } else if (selectedMetric.endsWith('PerTotal')) {
+    xScale = d3.scaleLinear()
+      .domain([0, d3.max(filteredData, d => d.TotalMedalCount)])
+      .range([0, width]);
+  } else {
+    // Handle other metrics if necessary
+    xScale = d3.scaleLinear()
+      .domain([0, d3.max(filteredData, d => d.TotalMedalCount)])
+      .range([0, width]);
+  }
 
   var yScale = d3.scaleLinear()
     .domain([0, d3.max(filteredData, d => d[selectedMetric])])
@@ -52,7 +72,21 @@ function createScatterPlot(containerId, data, selectedYear, selectedMetric, colo
   var circles = svg.selectAll("circle")
     .data(filteredData)
     .enter().append("circle")
-    .attr("cx", d => xScale(d.TotalMedalCount))
+    .attr("cx", function (d) {
+      // Dynamically set the x-coordinate based on the selected metric
+      if (selectedMetric.endsWith('PerBronze')) {
+        return xScale(d.BronzeCount);
+      } else if (selectedMetric.endsWith('PerSilver')) {
+        return xScale(d.SilverCount);
+      } else if (selectedMetric.endsWith('PerGold')) {
+        return xScale(d.GoldCount);
+      } else if (selectedMetric.endsWith('PerTotal')) {
+        return xScale(d.TotalMedalCount);
+      } else {
+        // Handle other metrics if necessary
+        return xScale(d.TotalMedalCount);
+      }
+    })
     .attr("cy", d => yScale(d[selectedMetric]))
     .attr("r", 5) // Adjust the radius as needed
     .style("fill", color)
@@ -67,11 +101,7 @@ function createScatterPlot(containerId, data, selectedYear, selectedMetric, colo
         .style("padding", "5px")
         .style("border", "1px solid #ccc");
 
-      tooltip.html(`
-        <b>Country:</b> ${d.Country_Year}<br>
-        <b>Total Medal Count:</b> ${d.TotalMedalCount}<br>
-        <b>${selectedMetric}:</b> ${d[selectedMetric] || 'N/A'}<br>
-      `);
+      tooltip.html(getTooltipContent(selectedMetric, d));
 
       tooltip.style("left", event.pageX + "px");
       tooltip.style("top", event.pageY + "px");
@@ -89,6 +119,83 @@ function createScatterPlot(containerId, data, selectedYear, selectedMetric, colo
     .style("font-size", "16px")
     .style("text-decoration", "underline")
     .text(`Olympics: ${selectedYear}, Metric: ${selectedMetric.replace(/([A-Z])/g, ' $1').trim()}`);
+}
+
+// Modify the tooltip content dynamically
+function getTooltipContent(metric, d) {
+  let medalType = "";
+  let additionalContent = "";
+
+  switch (metric) {
+    case "DensityPerBronze":
+      medalType = "bronzeCount";
+      additionalContent = `<b>Bronze Medal Count:</b> ${d.BronzeCount}<br>`;
+      additionalContent += `<b>Density Per Bronze:</b> ${d.DensityPerBronze || 'N/A'}<br>`;
+      break;
+    case "DensityPerSilver":
+      medalType = "silverCount";
+      additionalContent = `<b>Silver Medal Count:</b> ${d.SilverCount}<br>`;
+      additionalContent += `<b>Density Per Silver:</b> ${d.DensityPerSilver || 'N/A'}<br>`;
+      break;
+    case "DensityPerGold":
+      medalType = "goldCount";
+      additionalContent = `<b>Gold Medal Count:</b> ${d.GoldCount}<br>`;
+      additionalContent += `<b>Density Per Gold:</b> ${d.DensityPerGold || 'N/A'}<br>`;
+      break;
+    case "DensityPerTotal":
+      medalType = "TotalMedalCount"; // Corrected typo
+      additionalContent = `<b>Total Medal Count:</b> ${d.TotalMedalCount}<br>`;
+      additionalContent += `<b>Density Per Medal:</b> ${d.DensityPerTotal || 'N/A'}<br>`;
+      break;
+    case "GDPPerBronze":
+      medalType = "bronzeCount";
+      additionalContent = `<b>Bronze Medal Count:</b> ${d.BronzeCount}<br>`;
+      additionalContent += `<b>GDP Per Bronze:</b> ${d.GDPPerBronze || 'N/A'}<br>`;
+      break;
+    case "GDPPerSilver":
+      medalType = "silverCount";
+      additionalContent = `<b>Silver Medal Count:</b> ${d.SilverCount}<br>`;
+      additionalContent += `<b>GDP Per Bronze:</b> ${d.GDPPerSilver || 'N/A'}<br>`;
+      break;
+    case "GDPPerGold":
+      medalType = "goldCount";
+      additionalContent = `<b>Gold Medal Count:</b> ${d.GoldCount}<br>`;
+      additionalContent += `<b>GDP Per Bronze:</b> ${d.GDPPerGold || 'N/A'}<br>`;
+      break;
+      case "GDPPerTotal":
+        medalType = "TotalMedalCount";
+        additionalContent = `<b>Total Medal Count:</b> ${d.TotalMedalCount}<br>`;
+        additionalContent += `<b>GDP Per Medal:</b> ${d.GDPPerTotal || 'N/A'}<br>`;
+        break;
+    case "PopulationPerBronze":
+      medalType = "bronzeCount";
+      additionalContent = `<b>Bronze Medal Count:</b> ${d.BronzeCount}<br>`;
+      additionalContent += `<b>Population Per Bronze:</b> ${d.PopulationPerBronze || 'N/A'}<br>`;
+      break;
+    case "PopulationPerSilver":
+      medalType = "silverCount";
+      additionalContent = `<b>Silver Medal Count:</b> ${d.SilverCount}<br>`;
+      additionalContent += `<b>Population Per Bronze:</b> ${d.PopulationPerSilver || 'N/A'}<br>`;
+      break;
+    case "PopulationPerGold":
+      medalType = "goldCount";
+      additionalContent = `<b>Gold Medal Count:</b> ${d.GoldCount}<br>`;
+      additionalContent += `<b>Population Per Bronze:</b> ${d.PopulationPerGold || 'N/A'}<br>`;
+      break;
+    case "PopulationPerTotal":
+      medalType = "TotalMedalCount"; // Corrected typo
+      additionalContent = `<b>Total Medal Count:</b> ${d.TotalMedalCount}<br>`;
+      additionalContent += `<b>Population Per Medal:</b> ${d.PopulationPerTotal || 'N/A'}<br>`;
+      break;
+    // Add other cases if needed
+    default:
+      medalType = "TotalMedalCount"; // Default to TotalMedalCount
+  }
+
+  return `
+    <b>Country:</b> ${d.Country_Year}<br>
+    ${additionalContent}
+  `;
 }
 
 // Function to populate the density metric dropdown filter
@@ -206,7 +313,7 @@ d3.select("#secondYearFilter").on("change", function() {
 d3.select("#thirdYearFilter").on("change", function() {
   var selectedYear = this.value;
   var selectedMetric = d3.select("#popFilter").property("value");
-  updateScatterPlot("third-chart-container", data, selectedYear, selectedMetric, "green");
+  updateScatterPlot("third-chart-container", data, selectedYear, selectedMetric, "blue");
 });
 
 // Event listener for the Density dropdown
@@ -227,5 +334,5 @@ d3.select("#GDPFilter").on("change", function() {
 d3.select("#popFilter").on("change", function() {
   var selectedYear = d3.select("#thirdYearFilter").property("value");
   var selectedMetric = this.value;
-  updateScatterPlot("third-chart-container", data, selectedYear, selectedMetric, "green");
+  updateScatterPlot("third-chart-container", data, selectedYear, selectedMetric, "blue");
 });
