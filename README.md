@@ -34,16 +34,16 @@ Even though the Olympic data public, we strove to avoid using names in the analy
 
 # References for any code used that is not your own
 
-#Scatter Plots came from:
-#Scatter Plot
+# Scatter Plots came from:
+# Scatter Plot
 https://stackoverflow.com/questions/62466207/how-to-make-a-scatter-plot-with-d3-using-a-json-file-as-input
-#Dynamic Tooltip
+# Dynamic Tooltip
 https://stackoverflow.com/questions/33476143/loading-tooltip-message-dynamically-from-javascript
-#Switch Cases
+# Switch Cases
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/switch
-#X axis adjusts
+# X axis adjusts
 https://d3-graph-gallery.com/graph/scatter_buttonXlim.html
-#Basic Filter Code
+# Basic Filter Code
 https://plotly.com/javascript/filter/
 
 <!DOCTYPE html>
