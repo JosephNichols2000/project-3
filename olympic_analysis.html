@@ -7,7 +7,6 @@
         <meta name="description" content="Findings on olympic winners based on population and economic factors of home countries">
         <meta name="keywords" content="HTML, CSS, JavaScript">
         <meta name="author" content="Joss Stewart, Pascaline Njouwou, Ryan Nuttall, Joseph Nichols">
-
         <!-- Leaflet CSS -->
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
         integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
@@ -20,15 +19,32 @@
         
         <!-- Our CSS -->
         <link rel="stylesheet" type="text/css" href="olympic_style.css">
+
+        <script src="https://d3js.org/d3.v7.min.js"></script>
         </head>
 
     <body>
         <h1 class="siteHeader">What is the greatest predictor of Olympic success? Population size, population density, or GDP</h1>
         <img class="olympicRings" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fstatic01.nyt.com%2Fimages%2F2014%2F02%2F08%2Fsports%2F08sochi-hp%2F08sochi-hp-superJumbo.jpg&f=1&nofb=1&ipt=2f940304b15725374df5d8f03846eccc8ac9171b81961219c6bc1d6ed6566c9f&ipo=images" alt="Olympic rings" width="1200">
         <p class="projectOverview"></p>
-        <div id="map"></div>
+
+        <div id="yearSelectorDiv1">
+            <label for="yearSelector1">Select Year: </label>
+            <select id="yearSelector1">
+              <!-- Add options dynamically based on available years in your data -->
+            </select>
+          </div>
+        <div id="map1"></div>
         <script type="text/javascript" src="olympic_map.js"></script>
-        <script class="graphs"></script>
-        <script class="responsiveData"></script>
+
+        <div id="yearSelectorDiv2">
+            <label for="yearSelector2">Select Year: </label>
+            <select id="yearSelector2">
+              <!-- Add options dynamically based on available years in your data -->
+            </select>
+          </div>
+        <div id="map2"></div>
+        <script type="text/javascript" src="olympic_map_ratios.js"></script>
+        
     </body>
 </html>
