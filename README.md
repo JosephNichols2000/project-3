@@ -33,3 +33,81 @@ Even though the Olympic data public, we strove to avoid using names in the analy
 *Population - https://data.worldbank.org/indicator/SP.POP.TOTL?view=map
 
 # References for any code used that is not your own
+
+#Scatter Plots came from:
+#Scatter Plot
+https://stackoverflow.com/questions/62466207/how-to-make-a-scatter-plot-with-d3-using-a-json-file-as-input
+#Dynamic Tooltip
+https://stackoverflow.com/questions/33476143/loading-tooltip-message-dynamically-from-javascript
+#Switch Cases
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/switch
+#X axis adjusts
+https://d3-graph-gallery.com/graph/scatter_buttonXlim.html
+#Basic Filter Code
+https://plotly.com/javascript/filter/
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Olympic Data</title>
+  <!-- Our CSS -->
+  <link rel="stylesheet" type="text/css" href="static/css/style.css">
+</head>
+
+<body>
+
+  <!-- The container for the dropdowns and chart -->
+  <div class="container">
+    <!-- The container for the chart -->
+    <div id="chart-container" class="chart-container">
+    <!-- The dropdowns for selecting the year and density metric -->
+    <div class="dropdown-container">
+      <label for="yearFilter">Select Year:</label>
+      <select id="yearFilter"></select>
+      <label for="densityFilter">Select Density Metric:</label>
+      <select id="densityFilter"></select>
+    </div>
+  </div>
+</div>
+
+  <!-- Duplicate the container for the second chart -->
+<div class="container">
+  <!-- The container for the second chart and dropdowns -->
+  <div id="second-chart-container" class="chart-container">
+      <!-- The dropdowns for selecting the year and GDP metric for the second scatter plot -->
+      <div class="dropdown-container">
+          <label for="secondYearFilter">Select Year:</label>
+          <select id="secondYearFilter"></select>
+          <label for="GDPFilter">Select GDP Metric:</label>
+          <select id="GDPFilter"></select>
+      </div>
+      <!-- The second chart will be appended here -->
+  </div>
+</div>
+
+<!-- Duplicate the container for the third chart -->
+<div class="container">
+  <!-- The container for the second chart and dropdowns -->
+  <div id="third-chart-container" class="chart-container">
+      <!-- The dropdowns for selecting the year and Pop metric for the second scatter plot -->
+      <div class="dropdown-container">
+          <label for="thirdYearFilter">Select Year:</label>
+          <select id="thirdYearFilter"></select>
+          <label for="popFilter">Select Population Metric:</label>
+          <select id="popFilter"></select>
+      </div>
+      <!-- The third chart will be appended here -->
+  </div>
+</div>
+
+  <!-- D3 JavaScript -->
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <!-- Your JavaScript -->
+  <script src="./static/js/app.js"></script>
+</body>
+
+</html>
