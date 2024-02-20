@@ -81,9 +81,9 @@ function updateMarkers2(selectedYear2, data2) {
 
         if (latitude2 !== undefined && longitude2 !== undefined) {
             L.marker([latitude2, longitude2])
-                .bindPopup(`<h1>${countryYear2}</h1> <hr> <h3>Total Medals/GDP $${Math.round(totalMedalsPerGDP).toLocaleString()}</h3>
-                <hr> <h3>Total Medals/Population; ${totalMedalsPerPop.toLocaleString()}</h3> 
-                <hr> <h3>Total Medals/Population Density;  ${totalMedalsPerDensity.toLocaleString()}</h3>`)
+                .bindPopup(`<h1>${countryYear2}</h1> <hr> <h3>GDP/Total Medals $${Math.round(totalMedalsPerGDP).toLocaleString()}</h3>
+                <hr> <h3>Population/Total Medals; ${totalMedalsPerPop.toLocaleString()}</h3> 
+                <hr> <h3>Population Density/Total Medals;  ${totalMedalsPerDensity.toLocaleString()}</h3>`)
                 .addTo(markersLayer2);
         }
     });

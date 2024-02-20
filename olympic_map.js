@@ -92,26 +92,6 @@ function updateMarkers1(selectedYear1, data1) {
         }
     });
 
-//     // Add new markers for the filtered data
-//     filteredData1.forEach(item1 => {
-//         let latitude1 = item1.latitude;
-//         let longitude1 = item1.longitude;
-//         let countryYear1 = item1.Country_Year;
-//         let totalMedalCount = item1.TotalMedalCount;
-//         let gdp = item1['GDP Value'];
-//         let population = item1['Pop Value']
-//         let density = item1['Density Value']
-
-//         if (latitude1 !== undefined && longitude1 !== undefined) {
-//             L.marker([latitude1, longitude1])
-//                 .bindPopup(`<h1>${countryYear1}</h1> <hr> <h3>Total Medal Count; ${totalMedalCount.toLocaleString()}</h3> 
-//                 <hr> <h3>GDP USD, inflation adjusted;  ${gdp.toLocaleString()}</h3> 
-//                 <hr> <h3>Population; ${population.toLocaleString()}</h3> 
-//                 <hr> <h3>Population Density per sq. km; ${density.toLocaleString()}</h3>`)
-//                 .addTo(markersLayer1);
-//         }
-//     });
-
     // Add the markersLayer to the map
     myMap.addLayer(markersLayer1);
 }
