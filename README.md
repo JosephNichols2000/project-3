@@ -13,9 +13,10 @@ The purpose of this analysis was to obtain greater understanding of whether a co
    * The first dataset we have referred to as the Olympic Dataset. This dataset consists of about 270,000 rows each representing Olympic information for each event going back to 1896. The information included in the dataset includes the Olympians name, country represented, event and the medal achieved. This was the main dataset we used in our analysis. We chose this dataset because it provided a lot of records and countries to aggregate.
 
    * The other three datasets we used we gathered from the World Bank Group to find data on countries and nations GDP, Population and Population Density. The good thing about these datasets was the uniformity of the structure of the data going back into the 1960's.
+   * Data was taken in CSV format from the web. The data was modified in the Olympic and Country Coordinates datasets so that the country names would align with the World Bank datasets. The Olympic and World Bank datasets were imported into SQL and joined together with new columns created, "Country Year" which was used as a Primary Key, "DensityPerX" "GDPPerX", and "PopulationPerX". The joined table was turned into a csv and uploaded into NoSQL along with the Country Coordinates dataset, where they were combined and made into a json file to be used with our javascript code.
 
 # Using and interacting with the project
-
+The scatterplots have multiple filters and dynamic parts. Each scatterplot adjusts the plots visible based on the year selected and whether you desire to view the Bronze, Silver, Gold, or Total medal counts. Additionally, the title and tooltips respond to the filters selected and the information of the plot selected will show the data of that specific circle.
 
 # Ethical considerations made in the project
 Even though the Olympic data public, we strove to avoid using names in the analysis.
@@ -33,3 +34,81 @@ Even though the Olympic data public, we strove to avoid using names in the analy
 *Population - https://data.worldbank.org/indicator/SP.POP.TOTL?view=map
 
 # References for any code used that is not your own
+
+# Scatter Plots came from:
+# Scatter Plot
+https://stackoverflow.com/questions/62466207/how-to-make-a-scatter-plot-with-d3-using-a-json-file-as-input
+# Dynamic Tooltip
+https://stackoverflow.com/questions/33476143/loading-tooltip-message-dynamically-from-javascript
+# Switch Cases
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/switch
+# X axis adjusts
+https://d3-graph-gallery.com/graph/scatter_buttonXlim.html
+# Basic Filter Code
+https://plotly.com/javascript/filter/
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Olympic Data</title>
+  <!-- Our CSS -->
+  <link rel="stylesheet" type="text/css" href="static/css/style.css">
+</head>
+
+<body>
+
+  <!-- The container for the dropdowns and chart -->
+  <div class="container">
+    <!-- The container for the chart -->
+    <div id="chart-container" class="chart-container">
+    <!-- The dropdowns for selecting the year and density metric -->
+    <div class="dropdown-container">
+      <label for="yearFilter">Select Year:</label>
+      <select id="yearFilter"></select>
+      <label for="densityFilter">Select Density Metric:</label>
+      <select id="densityFilter"></select>
+    </div>
+  </div>
+</div>
+
+  <!-- Duplicate the container for the second chart -->
+<div class="container">
+  <!-- The container for the second chart and dropdowns -->
+  <div id="second-chart-container" class="chart-container">
+      <!-- The dropdowns for selecting the year and GDP metric for the second scatter plot -->
+      <div class="dropdown-container">
+          <label for="secondYearFilter">Select Year:</label>
+          <select id="secondYearFilter"></select>
+          <label for="GDPFilter">Select GDP Metric:</label>
+          <select id="GDPFilter"></select>
+      </div>
+      <!-- The second chart will be appended here -->
+  </div>
+</div>
+
+<!-- Duplicate the container for the third chart -->
+<div class="container">
+  <!-- The container for the second chart and dropdowns -->
+  <div id="third-chart-container" class="chart-container">
+      <!-- The dropdowns for selecting the year and Pop metric for the second scatter plot -->
+      <div class="dropdown-container">
+          <label for="thirdYearFilter">Select Year:</label>
+          <select id="thirdYearFilter"></select>
+          <label for="popFilter">Select Population Metric:</label>
+          <select id="popFilter"></select>
+      </div>
+      <!-- The third chart will be appended here -->
+  </div>
+</div>
+
+  <!-- D3 JavaScript -->
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <!-- Your JavaScript -->
+  <script src="./static/js/app.js"></script>
+</body>
+
+</html>
