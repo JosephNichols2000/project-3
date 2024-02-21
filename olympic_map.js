@@ -29,7 +29,7 @@ myMap.on('zoomend', function() {
     }
 });
 
-let url = 'https://raw.githubusercontent.com/JosephNichols2000/project-3/main/merged_medal_counts_latlong.json'
+let url = 'https://raw.githubusercontent.com/JosephNichols2000/project-3/main/modified_data/merged_medal_counts_latlong.json'
 
 // Initialize markersLayer
 let markersLayer1 = L.layerGroup();
