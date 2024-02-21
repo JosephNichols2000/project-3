@@ -238,7 +238,7 @@ function createYearFilter(uniqueYears, dropdownId) {
     .text(d => d);
 }
 
-var jsonDataUrl = "./modified_data/merged_medal_counts_latlong.json";
+var jsonDataUrl = "./merged_medal_counts_latlong.json";
 
 var data;
 
