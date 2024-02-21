@@ -150,42 +150,42 @@ function getTooltipContent(metric, d) {
     case "GDPPerBronze":
       medalType = "bronzeCount";
       additionalContent = `<b>Bronze Medal Count:</b> ${d.BronzeCount}<br>`;
-      additionalContent += `<b>GDP Per Bronze:</b> ${d.GDPPerBronze || 'N/A'}<br>`;
+      additionalContent += `<b>GDP Per Bronze:</b> $${d.GDPPerBronze.toFixed(2) || 'N/A'}<br>`;
       break;
     case "GDPPerSilver":
       medalType = "silverCount";
       additionalContent = `<b>Silver Medal Count:</b> ${d.SilverCount}<br>`;
-      additionalContent += `<b>GDP Per Bronze:</b> ${d.GDPPerSilver || 'N/A'}<br>`;
+      additionalContent += `<b>GDP Per Bronze:</b> $${d.GDPPerSilver.toFixed(2) || 'N/A'}<br>`;
       break;
     case "GDPPerGold":
       medalType = "goldCount";
       additionalContent = `<b>Gold Medal Count:</b> ${d.GoldCount}<br>`;
-      additionalContent += `<b>GDP Per Bronze:</b> ${d.GDPPerGold || 'N/A'}<br>`;
+      additionalContent += `<b>GDP Per Bronze:</b> $${d.GDPPerGold.toFixed(2) || 'N/A'}<br>`;
       break;
       case "GDPPerTotal":
         medalType = "TotalMedalCount";
         additionalContent = `<b>Total Medal Count:</b> ${d.TotalMedalCount}<br>`;
-        additionalContent += `<b>GDP Per Medal:</b> ${d.GDPPerTotal || 'N/A'}<br>`;
+        additionalContent += `<b>GDP Per Medal:</b> $${d.GDPPerTotal.toFixed(2) || 'N/A'}<br>`;
         break;
     case "PopulationPerBronze":
       medalType = "bronzeCount";
       additionalContent = `<b>Bronze Medal Count:</b> ${d.BronzeCount}<br>`;
-      additionalContent += `<b>Population Per Bronze:</b> ${d.PopulationPerBronze || 'N/A'}<br>`;
+      additionalContent += `<b>Population Per Bronze:</b> ${Math.round(d.PopulationPerBronze) || 'N/A'}<br>`;
       break;
     case "PopulationPerSilver":
       medalType = "silverCount";
       additionalContent = `<b>Silver Medal Count:</b> ${d.SilverCount}<br>`;
-      additionalContent += `<b>Population Per Bronze:</b> ${d.PopulationPerSilver || 'N/A'}<br>`;
+      additionalContent += `<b>Population Per Bronze:</b> ${Math.round(d.PopulationPerSilver) || 'N/A'}<br>`;
       break;
     case "PopulationPerGold":
       medalType = "goldCount";
       additionalContent = `<b>Gold Medal Count:</b> ${d.GoldCount}<br>`;
-      additionalContent += `<b>Population Per Bronze:</b> ${d.PopulationPerGold || 'N/A'}<br>`;
+      additionalContent += `<b>Population Per Bronze:</b> ${Math.round(d.PopulationPerGold) || 'N/A'}<br>`;
       break;
     case "PopulationPerTotal":
       medalType = "TotalMedalCount"; // Corrected typo
       additionalContent = `<b>Total Medal Count:</b> ${d.TotalMedalCount}<br>`;
-      additionalContent += `<b>Population Per Medal:</b> ${d.PopulationPerTotal || 'N/A'}<br>`;
+      additionalContent += `<b>Population Per Medal:</b> ${Math.round(d.PopulationPerTotal) || 'N/A'}<br>`;
       break;
     // Add other cases if needed
     default:
